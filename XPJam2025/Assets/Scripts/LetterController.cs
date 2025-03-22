@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class LetterController : MonoBehaviour
     [SerializeField] private List<Transform> letterPlaces;
     [SerializeField] private List<GameObject> platforms;
     [SerializeField] private Slider slider;
-    [SerializeField] private Dropdown dropdown;
+    [SerializeField] private TMP_Dropdown dropdown;
 
     public void CreateTheLetters()
     {
@@ -20,5 +21,20 @@ public class LetterController : MonoBehaviour
             letter.transform.position = place.position;
             letter.transform.localScale *= slider.value;
         }
+
+        for (int i = 0; i < platforms.Count; i++)
+        {
+            if (i == dropdown.value * 2 || i == dropdown.value * 2 + 1)
+            {
+                platforms[i].SetActive(true);
+            }
+            else
+            {
+                platforms[i].SetActive(false);
+            }
+        }
+        
+        letterPlaces[dropdown.value].gameObject.SetActive(false);
+        
     }
 }
