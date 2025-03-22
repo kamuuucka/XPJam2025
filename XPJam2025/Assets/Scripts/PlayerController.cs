@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject feet;
     [SerializeField] private PhysicsMaterial defaultMaterial;
     [SerializeField] private PhysicsMaterial stickyMaterial;
+    [SerializeField] private KeyBindsSO keyBindsSo;
     private Rigidbody _rb;
     private Collider _collider;
     private bool _onTheGround;
+    private float _moveInput;
 
     void Start()
     {
@@ -22,14 +24,23 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && _onTheGround)
+        if (Input.GetKeyDown(keyBindsSo.keyBinds[0].ToString()) && _onTheGround)
         {
             _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(keyBindsSo.keyBinds[1].ToString()))
         {
             _collider.material = stickyMaterial;
+        }
+        
+        if (Input.GetKeyDown(keyBindsSo.keyBinds[2].ToString()))
+        {
+            _moveInput = -1f;
+        }
+        else if (Input.GetKeyDown(keyBindsSo.keyBinds[3].ToString()))
+        {
+            _moveInput = 1f;
         }
     }
 
@@ -38,10 +49,8 @@ public class PlayerController : MonoBehaviour
         var colliders = Physics.OverlapSphere(feet.transform.position, 0.5f, LayerMask.GetMask("Ground"));
         
         _onTheGround = colliders.Length != 0;
-        
-        float moveInput = Input.GetAxis("Horizontal");
 
-        Vector3 movement = new Vector3(moveInput, 0f, 0f);
+        Vector3 movement = new Vector3(_moveInput, 0f, 0f);
 
         _rb.linearVelocity = new Vector3(movement.x * moveSpeed, _rb.linearVelocity.y, _rb.linearVelocity.z);
     }
