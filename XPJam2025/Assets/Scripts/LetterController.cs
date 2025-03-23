@@ -9,7 +9,10 @@ using UnityEngine.UI;
 public class LetterController : MonoBehaviour
 {
     [SerializeField] private KeyBindsSO lettersToSave;
-    [SerializeField] private List<GameObject> lettersPrefabs;
+    [SerializeField] private List<GameObject> lettersPrefabsRed;
+    [SerializeField] private List<GameObject> lettersPrefabsBlue;
+    [SerializeField] private List<GameObject> lettersPrefabsGreen;
+    [SerializeField] private List<GameObject> lettersPrefabsYellow;
     [SerializeField] private List<Transform> letterPlaces;
     [SerializeField] private List<GameObject> platforms;
     [SerializeField] private Slider slider;
@@ -23,13 +26,35 @@ public class LetterController : MonoBehaviour
     public void CreateTheLetters()
     {
 
-        foreach (var place in letterPlaces)
+        for (int i = 0; i < letterPlaces.Count; i++)
         {
-            var letterPrefab = lettersPrefabs.FirstOrDefault(
-                obj => obj.name == lettersToSave.keyBinds[letterPlaces.IndexOf(place)]);
-            Debug.Log(letterPrefab.name);
-            var letter = Instantiate(letterPrefab, place);
-            letter.transform.position = place.position;
+            GameObject letterPrefab = new GameObject();
+            if (i == 0)
+            {
+                letterPrefab = lettersPrefabsRed.FirstOrDefault(
+                    obj => obj.name == lettersToSave.keyBinds[i]);
+            }
+            
+            if (i == 1)
+            {
+                letterPrefab = lettersPrefabsBlue.FirstOrDefault(
+                    obj => obj.name == lettersToSave.keyBinds[i]);
+            }
+            
+            if (i == 2)
+            {
+                letterPrefab = lettersPrefabsGreen.FirstOrDefault(
+                    obj => obj.name == lettersToSave.keyBinds[i]);
+            }
+            
+            if (i == 3)
+            {
+                letterPrefab = lettersPrefabsYellow.FirstOrDefault(
+                    obj => obj.name == lettersToSave.keyBinds[i]);
+            }
+            
+            var letter = Instantiate(letterPrefab, letterPlaces[i]);
+            letter.transform.position = letterPlaces[i].position;
             if(_level != 0) letter.transform.localScale *= slider.value;
         }
 
