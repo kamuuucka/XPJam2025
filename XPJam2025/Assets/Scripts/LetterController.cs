@@ -29,8 +29,6 @@ public class LetterController : MonoBehaviour
         for (int i = 0; i < letterPlaces.Count; i++)
         {
             GameObject letterPrefab = new GameObject();
-            Debug.Log(i);
-            Debug.Log("Key Bind: " + lettersToSave.keyBinds[i]);
             if (i == 0)
             {
                 letterPrefab = lettersPrefabsRed.FirstOrDefault(
@@ -55,9 +53,7 @@ public class LetterController : MonoBehaviour
                 letterPrefab = lettersPrefabsYellow.FirstOrDefault(
                     obj => obj.name == lettersToSave.keyBinds[i]);
             }
-            
-            Debug.Log(letterPrefab);
-            
+
             var letter = Instantiate(letterPrefab, letterPlaces[i]);
             letter.transform.position = letterPlaces[i].position;
             if(_level != 0) letter.transform.localScale *= slider.value;

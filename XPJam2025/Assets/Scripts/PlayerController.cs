@@ -47,15 +47,7 @@ public class PlayerController : MonoBehaviour
                 _moveInput = -1f;
             }
         }
-        
-        foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKeyDown(keyCode))
-            {
-                Debug.Log("Key Pressed: " + keyCode);
-            }
-        }
-        
+
         if (Enum.TryParse(keyBindsSo.keyBinds[3], out KeyCode keyCode4))
         {
             if (Input.GetKeyDown(keyCode4))

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7690566405469179235}
   m_Layer: 0
-  m_Name: 9
+  m_Name: Alpha0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 6966653644647907732, guid: e844cbbfa3a16d34aa9225526b9e7407, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 33d46476de267544a9a15de3d9a0410f, type: 2}
+      objectReference: {fileID: 2100000, guid: f021a434412c8b64cb2a161bc49cd7a9, type: 2}
     - target: {fileID: 7023540449234922155, guid: e844cbbfa3a16d34aa9225526b9e7407, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
