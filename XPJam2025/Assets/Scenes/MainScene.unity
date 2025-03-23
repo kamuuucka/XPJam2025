@@ -777,7 +777,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cbb1d7f43304510801293b4b44d757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  letters: {fileID: 11400000, guid: 5e4644957f371452dab271e2d3b91742, type: 2}
+  lettersToSave: {fileID: 11400000, guid: 5e4644957f371452dab271e2d3b91742, type: 2}
+  lettersPrefabs:
+  - {fileID: 9063555979166198807, guid: 339e834c8e3b52447a475575854d618d, type: 3}
+  - {fileID: 9063555979166198807, guid: 7c6071a7d21bda34082941aeaed6375a, type: 3}
+  - {fileID: 9063555979166198807, guid: a9023cf870bd08d459dccc8b74918252, type: 3}
+  - {fileID: 9063555979166198807, guid: 5b576187e9e42b544a4292026cf4bab9, type: 3}
+  - {fileID: 9063555979166198807, guid: a1a16d87b5335df448c4ecd29b6bd6fa, type: 3}
+  - {fileID: 9063555979166198807, guid: f28cd5f94480d954799d934e245afe32, type: 3}
+  - {fileID: 9063555979166198807, guid: 046b660f480998f488fc58b25daff5f4, type: 3}
+  - {fileID: 9063555979166198807, guid: ae5099147758f424c8928cc5f0fabfed, type: 3}
+  - {fileID: 9063555979166198807, guid: 2608eb1a2f76c4a44a13977475781456, type: 3}
+  - {fileID: 9063555979166198807, guid: 437a1a83d9856224980d20275df345a5, type: 3}
+  - {fileID: 9063555979166198807, guid: 67b2012caa65166499ca3b19b44433ea, type: 3}
+  - {fileID: 9063555979166198807, guid: 3a398117bfc7914469c88b0de5e99f32, type: 3}
+  - {fileID: 9063555979166198807, guid: a2f957f2f885b064b8b5c6a2caa0d50c, type: 3}
+  - {fileID: 9063555979166198807, guid: a48e768cd53dcad4a82e3847e3e7f3c5, type: 3}
+  - {fileID: 9063555979166198807, guid: b929fa2d8d2b7334c9f5daffd109df0a, type: 3}
+  - {fileID: 9063555979166198807, guid: 8ca99751985a891409ae57237810c91d, type: 3}
+  - {fileID: 9063555979166198807, guid: 34ca87ffff4dace469ded44c91f0c954, type: 3}
+  - {fileID: 9063555979166198807, guid: d093c579efff62f46a1997ab96101e4c, type: 3}
+  - {fileID: 9063555979166198807, guid: 46f739187fd85f34290c2ff5c514b218, type: 3}
+  - {fileID: 9063555979166198807, guid: cab22e185dd7c95468a7991f3026a2e8, type: 3}
+  - {fileID: 9063555979166198807, guid: 8ca3cd5389b3ea143b02fcba70576d82, type: 3}
+  - {fileID: 9063555979166198807, guid: 13032e4ef256ace47a2b90647828ddb2, type: 3}
+  - {fileID: 9063555979166198807, guid: 9883caedcdfbd8e4abdec761f2275775, type: 3}
+  - {fileID: 9063555979166198807, guid: 8316ce705c88b1c48a5c36da7b9183ac, type: 3}
   letterPlaces:
   - {fileID: 1844565519}
   - {fileID: 291406966}
@@ -794,6 +819,9 @@ MonoBehaviour:
   - {fileID: 942744050}
   slider: {fileID: 0}
   dropdown: {fileID: 0}
+  scrollViewContent: {fileID: 365373253}
+  level2ui: {fileID: 1323565915760264056, guid: bdbcb03b74b234ad49569a615dc4550c, type: 3}
+  level3ui: {fileID: 1799367012124713596, guid: 222ac1bed0b844505818c12257c6f5c6, type: 3}
 --- !u!1 &291406965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,7 +3587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentAfterDrag: {fileID: 0}
-  character: 93
+  character: 
 --- !u!1 &1566257288
 GameObject:
   m_ObjectHideFlags: 0

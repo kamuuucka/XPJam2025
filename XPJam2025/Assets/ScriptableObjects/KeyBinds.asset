@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4fe1835a84b4ce996543280a11fe48, type: 3}
   m_Name: KeyBinds
   m_EditorClassIdentifier: 
-  keyBinds: 6100620030006400
+  keyBinds:
+  - Backslash
+  - Asterisk
+  - T
+  - Comma
