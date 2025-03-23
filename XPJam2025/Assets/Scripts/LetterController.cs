@@ -27,26 +27,32 @@ public class LetterController : MonoBehaviour
     [SerializeField] private GameManager gm;
 
     private int _level;
+    private bool _level2spawned;
+    private bool _level3spawned;
+    private bool _gameDone;
 
-    private void OnEnable()
+    private void Update()
     {
-        if (gm.level == 3)
+        if (GameManager.level == 3 && !_gameDone)
         {
             fadeImage.gameObject.SetActive(true);
+            _gameDone = true;
             StartCoroutine(FadeAndQuit());
+            
         }
         
-        Debug.Log(gm.level);
 
-        if (gm.level == 1)
+        if (GameManager.level == 1 && !_level2spawned)
         {
+            _level3spawned = true;
             var level2uiobject = Instantiate(level2ui, scrollViewContent.transform);
             level2uiobject.SetActive(true);
             slider = level2uiobject.GetComponentInChildren<Slider>();
         }
         
-        if (gm.level == 2)
+        if (GameManager.level == 2 && !_level3spawned)
         {
+            _level3spawned = true;
             var level3uiobject = Instantiate(level3ui, scrollViewContent.transform);
             level3uiobject.SetActive(true);
             dropdown = level3uiobject.GetComponentInChildren<TMP_Dropdown>();
@@ -57,7 +63,12 @@ public class LetterController : MonoBehaviour
     {
         foreach (var place in letterPlaces)
         {
-            
+            // Iterate through all children of the current place
+            foreach (Transform child in place.transform)
+            {
+                // Destroy the child GameObject
+                Destroy(child.gameObject);
+            }
         }
 
         for (int i = 0; i < letterPlaces.Count; i++)
@@ -93,7 +104,7 @@ public class LetterController : MonoBehaviour
             if(_level != 0) letter.transform.localScale *= slider.value;
         }
 
-        if (gm.level == 2)
+        if (GameManager.level == 2)
         {
             for (int i = 0; i < platforms.Count; i++)
             {

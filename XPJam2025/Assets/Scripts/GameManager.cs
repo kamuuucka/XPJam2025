@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject level3ui;
     [SerializeField] private UnityEvent onCollision;
 
-    public int level;
+    public static int level;
 
     private int _level;
 
