@@ -24,24 +24,46 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[0].ToString()) && _onTheGround)
+        if (Enum.TryParse(keyBindsSo.keyBinds[0], out KeyCode keyCode1))
         {
-            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[1].ToString()))
-        {
-            _collider.material = stickyMaterial;
+            if (Input.GetKeyDown(keyCode1))
+            {
+                _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
         }
         
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[2].ToString()))
+        if (Enum.TryParse(keyBindsSo.keyBinds[1], out KeyCode keyCode2))
         {
-            _moveInput = -1f;
+            if (Input.GetKeyDown(keyCode2))
+            {
+                
+            }
         }
-        else if (Input.GetKeyDown(keyBindsSo.keyBinds[3].ToString()))
+
+        if (Enum.TryParse(keyBindsSo.keyBinds[2], out KeyCode keyCode3))
         {
-            _moveInput = 1f;
+            if (Input.GetKeyDown(keyCode3))
+            {
+                _moveInput = -1f;
+            }
         }
+        
+        foreach (KeyCode keyCode in Enum.GetValues(typeof(KeyCode)))
+        {
+            if (Input.GetKeyDown(keyCode))
+            {
+                Debug.Log("Key Pressed: " + keyCode);
+            }
+        }
+        
+        if (Enum.TryParse(keyBindsSo.keyBinds[3], out KeyCode keyCode4))
+        {
+            if (Input.GetKeyDown(keyCode4))
+            {
+                _moveInput = 1f;
+            }
+        }
+        
     }
 
     void FixedUpdate()
