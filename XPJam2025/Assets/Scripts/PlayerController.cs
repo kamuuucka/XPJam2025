@@ -11,37 +11,55 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PhysicsMaterial defaultMaterial;
     [SerializeField] private PhysicsMaterial stickyMaterial;
     [SerializeField] private KeyBindsSO keyBindsSo;
-    private Rigidbody _rb;
+    [SerializeField] private Transform spawn;
+    private Rigidbody2D _rb;
     private Collider _collider;
     private bool _onTheGround;
     private float _moveInput;
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponentInChildren<Collider>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[0].ToString()) && _onTheGround)
-        {
-            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
 
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[1].ToString()))
+        _moveInput = 0;
+        
+        if (Enum.TryParse(keyBindsSo.keyBinds[0], out KeyCode keyCode1))
         {
-            _collider.material = stickyMaterial;
+            if (Input.GetKeyDown(keyCode1))
+            {
+                _rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            }
         }
         
-        if (Input.GetKeyDown(keyBindsSo.keyBinds[2].ToString()))
+        if (Enum.TryParse(keyBindsSo.keyBinds[1], out KeyCode keyCode2))
         {
-            _moveInput = -1f;
+            if (Input.GetKey(keyCode2))
+            {
+                
+            }
         }
-        else if (Input.GetKeyDown(keyBindsSo.keyBinds[3].ToString()))
+
+        if (Enum.TryParse(keyBindsSo.keyBinds[2], out KeyCode keyCode3))
         {
-            _moveInput = 1f;
+            if (Input.GetKey(keyCode3))
+            {
+                _moveInput = 1f;
+            }
         }
+
+        if (Enum.TryParse(keyBindsSo.keyBinds[3], out KeyCode keyCode4))
+        {
+            if (Input.GetKey(keyCode4))
+            {
+                _moveInput = -1f;
+            }
+        }
+
     }
 
     void FixedUpdate()
@@ -52,6 +70,11 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(_moveInput, 0f, 0f);
 
-        _rb.linearVelocity = new Vector3(movement.x * moveSpeed, _rb.linearVelocity.y, _rb.linearVelocity.z);
+        _rb.linearVelocity = new Vector3(movement.x * moveSpeed, _rb.linearVelocity.y);
+    }
+
+    public void ResetSpawn()
+    {
+        transform.position = spawn.position;
     }
 }
