@@ -44,7 +44,7 @@ public class LetterController : MonoBehaviour
 
         if (GameManager.level == 1 && !_level2spawned)
         {
-            _level3spawned = true;
+            _level2spawned = true;
             var level2uiobject = Instantiate(level2ui, scrollViewContent.transform);
             level2uiobject.SetActive(true);
             slider = level2uiobject.GetComponentInChildren<Slider>();
@@ -99,9 +99,11 @@ public class LetterController : MonoBehaviour
                     obj => obj.name == lettersToSave.keyBinds[i]);
             }
 
+            Debug.Log(letterPrefab);
+            
             var letter = Instantiate(letterPrefab, letterPlaces[i]);
             letter.transform.position = letterPlaces[i].position;
-            if(_level != 0) letter.transform.localScale *= slider.value;
+            if(GameManager.level != 0) letter.transform.localScale *= slider.value;
         }
 
         if (GameManager.level == 2)
